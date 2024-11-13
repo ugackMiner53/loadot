@@ -1,0 +1,15 @@
+; Engine configuration file.
+; This is only here to make Godot happy for language server features
+
+config_version=5
+
+[application]
+
+config/name="Loadot"
+config/features=PackedStringArray("4.0", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Loadot="*res://loadot/core/globals.gd"
+LoadotLoader="*res://loadot/core/loader.gd"

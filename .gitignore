@@ -1,0 +1,5 @@
+*.exe
+*.zip
+loadot/mods/*
+.godot
+export_presets.cfg
