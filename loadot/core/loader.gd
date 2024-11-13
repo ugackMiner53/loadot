@@ -42,7 +42,6 @@ func load_mods(mod_directory : String):
     # if ResourceLoader.has_method("list_directory"):
     #    directories = ResourceLoader.call("list_directory", mod_directory)
 
-
     # Load packed mods
     for directory in mod_dir.get_directories(): 
         logger.debug("Found mod %s, loading..." % directory)
