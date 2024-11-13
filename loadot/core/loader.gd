@@ -34,9 +34,17 @@ func load_mods(mod_directory : String):
         logger.error("Mod directory %s not found!" % mod_directory)
         return
     
-    for directory in mod_dir.get_directories(): 
+    var directories = mod_dir.get_directories()
+
+    # Godot 4.4+ function to list folders in Resources instead of DirAccess (see https://github.com/godotengine/godot/pull/96590)
+    # Commented out because it's unclear if FileAccess 
+    # if ResourceLoader.has_method("list_directory"):
+    #    directories = ResourceLoader.call("list_directory", mod_directory)
+
+    for directory in directories: 
+        logger.debug("Found directory %s, finding main and loading..." % directory)
         var mod_main := mod_directory.path_join(directory).path_join("main.gd")
-        if FileAccess.file_exists(mod_main):
+        if ResourceLoader.exists(mod_main):
             load(mod_main).new()
             logger.debug("Loaded %s" % directory)
         else:

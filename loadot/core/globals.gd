@@ -7,5 +7,5 @@ var Logger : Script = load("res://loadot/core/logger.gd")
 var Registry : Script = load("res://loadot/core/registry.gd").new()
 
 
-# This should be merged with 
+# This should likely be merged with registry at some point
 var Injector : Script = load("res://loadot/core/injector.gd")
