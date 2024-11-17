@@ -11,7 +11,7 @@ static func inject_script(script_path : String) -> Script:
     var parent_script : Script = child_script.get_base_script()
     var parent_script_path = parent_script.resource_path
 
-    # Here we want to store the fact that we're injecting so we can do a dependency chain
+    # Here we want to store the fact that we're injecting so we can do an inheritance chain?
 
     # This is just for testing
     child_script.take_over_path(parent_script_path)
