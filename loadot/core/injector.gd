@@ -1,21 +1,17 @@
 extends Node
 
 # Based on script extension from Delta V and GodotModding
-static func inject_script(script_path : String) -> Script:
-    var child_script : Script = load(script_path)
+static func inject_script(script : Script):
 
-    child_script.set_meta("injected_script_path", script_path)
+    script.set_meta("injected_script_path", script.resource_path)
+    script.new()
 
-    child_script.new()
-
-    var parent_script : Script = child_script.get_base_script()
+    var parent_script : Script = script.get_base_script()
     var parent_script_path = parent_script.resource_path
 
     # Here we want to store the fact that we're injecting so we can do an inheritance chain?
 
-    # This is just for testing
-    child_script.take_over_path(parent_script_path)
-    return child_script
+    script.take_over_path(parent_script_path)
 
 # Replace the running script on an autoload with our custom script
 func inject_autoload(script : Script, autoload_node : Node) -> Script:

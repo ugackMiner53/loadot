@@ -57,4 +57,6 @@ func load_patches():
 
     for patch in patches:
         # TODO: Autodetect if patch is autoload patch or not
-        Loadot.Injector.inject_script(patch.script_path)
+        Loadot.Injector.inject_script(patch.script_path)        var patch_script = load(patch.script_path)
+            print("injecting normal %s" % patch)
+            Loadot.Injector.inject_script(patch_script)
