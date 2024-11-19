@@ -16,10 +16,12 @@ class ModResource extends Resource:
 class Patch extends Resource:
     var script_path : String
     var priority : int
+    var node : Node = null
 
-    func _init(_script_path : String, _priority := 1):
+    func _init(_script_path : String, _priority := 1, _node : Node = null):
         script_path = _script_path
         priority = _priority
+        node = _node
 
 ## Register mod details for other mods to read and parse
 func register_mod(id : String, name : String, version : String):
@@ -49,6 +51,14 @@ func register_patch(patch, priority := 0) -> void:
     else:
         push_error("Patch %s is not Patch class or String! Rejecting!" % patch)
 
+func register_autoload(patch, node : Node, priority := 0):
+    if patch is Patch:
+        patches.append(patch)
+    elif patch is String:
+        var new_patch = Patch.new(patch, priority, node)
+        patches.append(new_patch)
+    else:
+        push_error("Autoload patch %s is not Patch class or String! Rejecting!" % patch)
 
 ## Function to start patching all registered patches respecting priority
 func load_patches():
@@ -56,7 +66,8 @@ func load_patches():
     patches.sort_custom(func (a : Patch, b : Patch): return a.priority < b.priority)
 
     for patch in patches:
-        # TODO: Autodetect if patch is autoload patch or not
-        Loadot.Injector.inject_script(patch.script_path)        var patch_script = load(patch.script_path)
-            print("injecting normal %s" % patch)
-            Loadot.Injector.inject_script(patch_script)
+        var patch_script = load(patch.script_path)
+        Loadot.Injector.inject_script(patch_script)
+
+        if patch.node:
+            Loadot.Injector.inject_autoload(patch_script, patch.node)
