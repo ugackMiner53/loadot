@@ -1,5 +1,7 @@
 extends Node
 
+var version := "0.0.1-alpha"
+
 var Logger : Script = load("res://loadot/core/logger.gd")
 
 # Unfortunately, we have to instance this here because Godot 4.0 did not have static variables
