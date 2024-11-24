@@ -5,7 +5,7 @@
 
 
 ## Installation
-1. Download the latest release zip from the [releases] page.
+1. Download the latest release zip from the [releases](https://github.com/ugackMiner53/loadot/releases) page.
 2. Extract the contents of the zip into the same folder as the executable of the game you want to mod.
 3. Start the game!
 
@@ -140,7 +140,7 @@ GUMM is a combination mod manager and mod loader that allows users to store, set
 Loadot tries to be as simple as possible to integrate with external mod managers like [r2modman](https://r2modman.com/), as well as being easier to maintain, and keep compatibility with more versions of Godot.
 
 ## Contributing
-Contributions are welcome to the project! Open a [pull request]() and your changes should be reviewed shortly!
+Contributions are welcome to the project! Open a [pull request](https://github.com/ugackMiner53/loadot/pulls) and your changes should be reviewed shortly!
 
-You can also contribute by using Loadot! Finding issues and reporting them in the [issues]() helps the project become better for everyone!
+You can also contribute by using Loadot! Finding issues and reporting them in the [issues](https://github.com/ugackMiner53/loadot/issues) helps the project become better for everyone!
 
